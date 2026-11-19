@@ -7,3 +7,5 @@ Jeu de Noël en 3D pour iPad : luge, canoë et deltaplane. Jouable directement d
 Sur iPad : ouvrir le lien dans Safari, puis Partager → « Sur l'écran d'accueil ».
 
 Ce dépôt ne contient que la version jouable. Crédits des modèles 3D : voir `CREDITS.txt`.
+
+Pour tester avec tout débloqué (sans toucher à la sauvegarde) : https://fhdu003.github.io/la-grande-descente/?tout
