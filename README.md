@@ -8,4 +8,6 @@ Sur iPad : ouvrir le lien dans Safari, puis Partager → « Sur l'écran d'accue
 
 Ce dépôt ne contient que la version jouable. Crédits des modèles 3D : voir `CREDITS.txt`.
 
-Pour tester avec tout débloqué (sans toucher à la sauvegarde) : https://fhdu003.github.io/animal-raid/?tout
+Pour tester avec tout débloqué (sauvegarde séparée, la vraie partie n'est pas touchée) : https://fhdu003.github.io/animal-raid/?tout
+
+Pour remettre la vraie partie à zéro sur un appareil : https://fhdu003.github.io/animal-raid/?reset
