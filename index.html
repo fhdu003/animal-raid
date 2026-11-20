@@ -32,7 +32,7 @@ html,body{margin:0;height:100%;overflow:hidden;background:#0d1446;font-family:Nu
 .dim{background:rgba(8,10,40,.55);justify-content:center}
 
 /* Écran de démarrage : un premier contact débloque le son sur l'iPad */
-#tapStart{position:fixed;inset:0;z-index:50;display:flex;align-items:flex-end;justify-content:center;padding-bottom:calc(env(safe-area-inset-bottom) + 34px);background:radial-gradient(ellipse at 50% 85%,rgba(10,16,60,.55),rgba(10,16,60,0) 60%);cursor:pointer}
+#tapStart{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;background:rgba(8,12,40,.72);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);cursor:pointer}
 #tapStart.gone{opacity:0;pointer-events:none;transition:opacity .5s}
 .tapPill{font-family:'Luckiest Guy';font-size:min(7vw,30px);color:#fff;background:var(--green);border:5px solid var(--ink);border-radius:999px;padding:16px 28px 11px;box-shadow:0 6px 0 var(--ink);animation:tapPulse 1.2s ease-in-out infinite}
 @keyframes tapPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
