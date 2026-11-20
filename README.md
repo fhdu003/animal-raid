@@ -1,4 +1,4 @@
-# La Grande Descente
+# Animal Raid
 
 Jeu de Noël en 3D pour iPad : luge, canoë et deltaplane. Jouable directement dans Safari, même hors ligne.
 
