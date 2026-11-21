@@ -1,6 +1,6 @@
 Personnages : pack "Cute Pets & Wildlife" v3.4 et v4.0 Vol. 2 par Popyca (Vuena), licence achetée par François-Henri.
 Licence : usage libre dans ses propres projets, pas de redistribution des fichiers eux-mêmes.
-Modèles utilisés : labrador, renard roux, loutre, harfang des neiges, chat, ours brun, dragon rouge
+Modèles utilisés : labrador, bébé phoque, tigre, loutre, mouffette, ours brun, harfang des neiges, renard roux, dragon rouge, singe, chat, kitsune
 (LOD1 retiré, 6 animations gardées, textures 1024 px WebP).
 Police Luckiest Guy : Apache 2.0. Tout le reste (véhicules, décors, obstacles) est fait en code pour ce jeu.
 
@@ -10,6 +10,7 @@ Décors (licence CC0, domaine public) :
 - Renne : Cute Pets & Wildlife Vol. 2
 - Medieval Village MegaKit (version gratuite), par Quaternius — https://quaternius.com (CC0) : maisons, pontons, pont, charrettes
 - Vache, cheval, cerf, grenouille, tortue, castor, poule : Cute Pets & Wildlife v3.4, par Popyca (pack acheté)
+- Espace : Ultimate Space Kit et Ultimate Spaceships, par Quaternius — https://quaternius.com (CC0) ; Space Kit, par Kenney — https://kenney.nl (CC0)
 
 Musiques (licence Pixabay, utilisation libre dans un jeu) :
 - Luge : « Joyful Sleigh Ride », DPStudioMusic — https://pixabay.com/music/christmas-royalty-free-christmas-music-joyful-sleigh-ride-425835/
