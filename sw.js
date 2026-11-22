@@ -4,8 +4,18 @@ self.addEventListener('activate', e => e.waitUntil(self.clients.claim()));
 self.addEventListener('fetch', e => {
   const r = e.request;
   if (r.method !== 'GET' || new URL(r.url).origin !== location.origin) return;
-  // réseau d'abord, mais si le réseau traîne plus de 4 s (voiture, partage de connexion) on sert la copie gardée
-  const cached = () => caches.match(r, { ignoreSearch: true }).then(m => m || caches.match('./'));
-  const net = fetch(r).then(res => { if (res.ok) { const cp = res.clone(); e.waitUntil(caches.open(C).then(c => c.put(r, cp))); } return res; });
-  e.respondWith(Promise.race([net, new Promise(ok => setTimeout(ok, 4000))]).then(res => res || cached().then(m => m || net)).catch(() => cached()));
+  // La page (13 Mo) est gardée sous une seule clé, quelle que soit l'adresse (?tout…).
+  // Réseau d'abord pour recevoir les mises à jour ; si le téléchargement complet dépasse 4 s (voiture, partage
+  // de connexion) on sert la copie gardée, et la nouvelle version, qui finit de se charger derrière, servira au prochain lancement.
+  const key = r.mode === 'navigate' ? './' : r;
+  const net = fetch(r).then(async res => {
+    if (!res.ok) throw new Error('http ' + res.status);
+    const full = new Response(await res.blob(), { status: res.status, statusText: res.statusText, headers: res.headers });
+    const c = await caches.open(C); await c.put(key, full.clone());
+    return full;
+  });
+  e.waitUntil(net.catch(() => {}));
+  e.respondWith(caches.match(key).then(hit => hit
+    ? Promise.race([net, new Promise(ok => setTimeout(ok, 4000))]).then(x => x || hit).catch(() => hit)
+    : net.catch(() => Response.error())));
 });
