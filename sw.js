@@ -4,6 +4,8 @@ self.addEventListener('activate', e => e.waitUntil(self.clients.claim()));
 self.addEventListener('fetch', e => {
   const r = e.request;
   if (r.method !== 'GET' || new URL(r.url).origin !== location.origin) return;
+  // Le jeu de piste (cadeau/) n'est pas géré ici : sinon sa page prendrait la place du jeu dans le cache.
+  if (new URL(r.url).pathname.includes('/cadeau/')) return;
   // La page (13 Mo) est gardée sous une seule clé, quelle que soit l'adresse (?tout…).
   // Réseau d'abord pour recevoir les mises à jour ; si le téléchargement complet dépasse 4 s (voiture, partage
   // de connexion) on sert la copie gardée, et la nouvelle version, qui finit de se charger derrière, servira au prochain lancement.
