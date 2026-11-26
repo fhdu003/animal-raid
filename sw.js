@@ -9,7 +9,9 @@ self.addEventListener('fetch', e => {
   // La page (13 Mo) est gardée sous une seule clé, quelle que soit l'adresse (?tout…).
   // Réseau d'abord pour recevoir les mises à jour ; si le téléchargement complet dépasse 4 s (voiture, partage
   // de connexion) on sert la copie gardée, et la nouvelle version, qui finit de se charger derrière, servira au prochain lancement.
-  const key = r.mode === 'navigate' ? './' : r;
+  // (seule la page du jeu va sous cette clé : une autre page du même dossier ne doit pas prendre sa place)
+  const path = new URL(r.url).pathname;
+  const key = r.mode === 'navigate' && (path.endsWith('/') || path.endsWith('/index.html')) ? './' : r;
   const net = fetch(r).then(async res => {
     if (!res.ok) throw new Error('http ' + res.status);
     const full = new Response(await res.blob(), { status: res.status, statusText: res.statusText, headers: res.headers });
