@@ -2,7 +2,7 @@ Personnages : pack "Cute Pets & Wildlife" v3.4 et v4.0 Vol. 2 par Popyca (Vuena)
 Licence : usage libre dans ses propres projets, pas de redistribution des fichiers eux-mêmes.
 Modèles utilisés : labrador, bébé phoque, tigre, loutre, mouffette, ours brun, harfang des neiges, renard roux, dragon rouge, singe, chat, kitsune
 (LOD1 retiré, 6 animations gardées, textures 1024 px WebP).
-Police Luckiest Guy : Apache 2.0. Tout le reste (véhicules, décors, obstacles) est fait en code pour ce jeu.
+Police Luckiest Guy : Apache 2.0. Police Nunito : SIL Open Font License 1.1 (The Nunito Project Authors). Tout le reste (véhicules, décors, obstacles) est fait en code pour ce jeu.
 
 Décors (licence CC0, domaine public) :
 - Stylized Nature MegaKit (version gratuite), par Quaternius — https://quaternius.com
