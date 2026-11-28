@@ -1,8 +1,17 @@
 const C = 'animal-raid-2';
+// début de la page seulement (l'empreinte est tout en haut : inutile de lire les 14 Mo)
+const head = async res => {
+  const r = res.clone().body.getReader(), dec = new TextDecoder();
+  let s = '';
+  while (s.length < 200000) { const { done, value } = await r.read(); if (done) break; s += dec.decode(value, { stream: true }); if (s.includes('name="build-time"')) break; }
+  r.cancel().catch(() => {});
+  return s;
+};
 const put = async v => {
-  const page = await fetch(new Request('./', { cache: 'reload' }));
+  // (no-cache : le navigateur redemande au serveur, mais garde la copie qu'il a déjà si elle n'a pas changé)
+  const page = await fetch(new Request('./', { cache: 'no-cache' }));
   if (!page.ok) throw new Error('http ' + page.status);
-  if (v && !(await page.clone().text()).includes('name="build" content="' + v + '"')) throw new Error('page pas encore à jour');
+  if (v && !(await head(page)).includes('name="build" content="' + v + '"')) throw new Error('page pas encore à jour');
   await (await caches.open(C)).put('./', page);
 };
 self.addEventListener('install', e => e.waitUntil((async () => {
@@ -23,7 +32,7 @@ self.addEventListener('fetch', e => {
   const r = e.request, u = new URL(r.url);
   if (r.method !== 'GET' || u.origin !== location.origin || r.headers.has('range')) return;
   // Le jeu de piste (cadeau/) n'est pas géré ici, ni le numéro de version (toujours demandé au serveur).
-  if (u.pathname.includes('/cadeau/') || u.pathname.endsWith('/cadeau') || u.pathname.endsWith('/version.txt')) return;
+  if (u.pathname.includes('/cadeau/') || u.pathname.endsWith('/cadeau') || u.pathname.endsWith('/version.txt') || u.pathname.endsWith('/build.txt')) return;
   // La page (14 Mo) est gardée sous une seule clé, quelle que soit l'adresse (?tout…) ; seule la page du jeu va sous cette clé.
   const base = new URL(self.registration.scope).pathname;
   const key = r.mode === 'navigate' && (u.pathname === base || u.pathname === base + 'index.html') ? './' : r;
